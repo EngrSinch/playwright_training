@@ -1,13 +1,14 @@
 # Playwright Training
 
 ## Resources
+---
 - [Playwright Website](https://playwright.dev/)
 - [Playwright Github](https://github.com/microsoft/playwright)
 - [NodeJs Downloads](https://nodejs.org/en/download)
 - [VSCode Downloads](https://code.visualstudio.com/)
 
 ## Installation
-
+---
 1. Download and Install Node.js at this url 
 https://nodejs.org/en/download then verify if successfully installed by opening new terminal and run below command:
 ```
@@ -32,8 +33,52 @@ npx playwright test
 ```
 
 ## Configs
-
+---
 - playwright.config.ts
+
+## Command Line Scripts
+---
+Default playwright command line script:
+- ```npx playwright test```
+---
+However, if it is encoded under ```package.json``` as follows:
+```
+  "scripts": {
+    "test": "npx playwright test"
+  },
+```
+Then we can use a shortcut command line script of:
+- ```npm run test```
+---
+Using tagging for test cases, we can add "tag" in tests itself as follows:
+```
+test('get started link', {tag: "@first"}, async ({ page }) => {
+```
+Then it can be executed in command line thru:
+
+(windows)
+- ```npx playwright test --grep first```
+
+(ios)
+- ```npx playwright test --grep @first```
+---
+For debugging, we can use:
+- ```npx playwright test --ui```
+---
+For code generation for tests, we can use:
+- ```npx playwright codegen```
+
+## Locator Strategies
+---
+These are the page locator strategies recommended by Playwright Dev Team
+- ```page.getByRole()```
+- ```page.getByText()```
+- ```page.getByLabel()```
+- ```page.getByPlaceholder()```
+- ```page.getByAltText()```
+- ```page.getByTitle()```
+- ```page.getByTestId()```
+
 
 
 
