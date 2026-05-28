@@ -1,24 +1,17 @@
 import { test as setup, expect } from "@playwright/test";
+import { LoginPage } from "../lib/pages/login.page";
 
-setup("Create customer 01 auth", async ({ page, context}) => {
+setup("Login Setup", async ({ page, context }) => {
     // Setup Variables that will be used
-    const email = "customer@practicesoftwaretesting.com";
+    const email = "customer2@practicesoftwaretesting.com";
     const password = "welcome01";
+    const usersName = "Jack Howe"
     const customer01AuthFile = ".auth/customer01.json"
 
-    // Then exec login auth
-    await page.goto("https://practicesoftwaretesting.com/auth/login")
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+    await loginPage.login(email, password);
 
-    // fill email
-    // await page.locator('[data-test="email"]').fill('customer@practicesoftwaretesting.com');
-    await page.getByTestId("email").fill(email);
-    // fill password
-    //await page.locator('[data-test="password"]').fill('welcome01');
-    await page.getByTestId("password").fill(password);
-    // click submit button
-    //await page.locator('[data-test="login-submit"]').click();
-    await page.getByTestId("login-submit").click();
-
-    await expect(page.getByTestId("nav-menu")).toContainText("Jane Doe");
+    await expect(loginPage.navMenu).toContainText(usersName);
     await context.storageState({ path: customer01AuthFile});
 });
