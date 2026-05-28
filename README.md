@@ -13,9 +13,10 @@
 1. Download and Install Node.js at this url 
 https://nodejs.org/en/download then verify if successfully installed by opening new terminal and run below command:
     - ```node --version```
+    - > Note: node version should be version 20 and above.
 2. Then go to your development folder to install playwright with command below:
     - ```npm init playwright@latest```
-    * > If npm does not work, (For Windows) open powershell and run the command below, then rerun the npm installation.
+    - > If npm does not work, (For Windows) open powershell and run the command below, then rerun the npm installation.
     - ```Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser```
 3. Once everything installed successfully, run the command below to verify the installations and the functionality of the playwright executions.
     - ```npx playwright test```
